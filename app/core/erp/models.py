@@ -1,9 +1,43 @@
 from django.db import models
 from datetime import datetime
 
+from django.db.models.deletion import CASCADE
+
 # Create your models here.
 
+class Type(models.Model):
+    name = models.CharField(max_length=150, verbose_name="Nombre")
+
+    # Metodo str, to string
+    def __str__(self):
+        return self.name
+
+    # LA clse meta para propiedades
+    db_table = 'tipo'
+    verbose_name = 'Tipo'
+    verbose_name_plural = 'Tipos'
+    ordering = ['id']
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=150, verbose_name="Nombre")
+
+    # Metodo str, to string
+    def __str__(self):
+        return self.name
+
+    # LA clse meta para propiedades
+    db_table = 'categoria'
+    verbose_name = 'Categoria'
+    verbose_name_plural = 'Categorias'
+    ordering = ['id']
+
+
+
 class Employee(models.Model):
+    # Para relacionar la tabla
+    category = models.ManyToManyField(Category)
+    type = models.ForeignKey(Type, on_delete=models.CASCADE) #models.protect para proteger
     names = models.CharField(max_length=150, verbose_name="Nombres")
     dni = models.CharField(max_length=8, verbose_name="DNI"),
     date_joined = models.DateField(default=datetime.now, verbose_name="Fecha de registro")
