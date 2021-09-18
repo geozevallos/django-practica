@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+
+
+{% block content %} 
+
+<!--Sin especificar sería: <a href="{% url 'vista1' %}">Ir a la vista 1</a>  -->
+<a href="{% url 'erp:vista1' %}">Ir a la vista 1</a>
+
+<br>
+{% for product in products %}
+    <li>{{product.name}}</li>
+{% endfor %} 
+
+{% if products %}
+    <p>Hay datos</p>
+{% else %}
+    <p>No hay datos :c</p>
+{% endif %} 
+{% endblock content %}

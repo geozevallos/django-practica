@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Mi primera vista</h1>
+
+    {% block content %} 
+        {% for category in categories %}
+            <li>{{category.name}}</li>
+        {% endfor %} 
+        
+        {% if categories %}
+            <p>Hay datos</p>
+        {% else %}
+            <p>No hay datos :c</p>
+        {% endif %} 
+    {% endblock content %}
+
+    <p>{{name}}</p>
+  </body>
+</html>
