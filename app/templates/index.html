@@ -1,38 +1,7 @@
-{% load static %}
+{% extends 'body.html' %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'lib/bootstrap-5.1.1-dist/css/bootstrap.min.css' %}">
-    <script src="{% static 'lib/bootstrap-5.1.1-dist/js/bootstrap.min.js' %}"></script>
-    <title>Document</title>
-  </head>
-  <body>
-
-    <div class="container">
-
+{% block content %}
     
+{% endblock  %}
     
-    <h1>Mi primera vista</h1>
-
-    {% block content %} 
-        {% for category in categories %}
-            <li>{{category.name}}</li>
-        {% endfor %} 
-        
-        {% if categories %}
-            <p>Hay datos</p>
-        {% else %}
-            <p>No hay datos :c</p>
-        {% endif %} 
-    {% endblock content %}
-
-    <p>{{name}}</p>
-
-  </div>
-  </body>
-</html>

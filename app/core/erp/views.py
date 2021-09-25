@@ -29,3 +29,7 @@ def mySecondView(request):
 
     #Retornando plantilla: 
     return render(request, 'second.html', data)
+
+# De prueba
+def prueba(request):
+    return render(request, 'index.html')

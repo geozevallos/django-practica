@@ -1,0 +1,32 @@
+{% extends 'list.html' %} 
+
+
+{% block columns %}
+<tr>
+    <th scope="col">#</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Opciones</th>
+  </tr>
+{% endblock columns %}
+    
+
+
+{% block rows %}
+{% for category in categories %}
+<tr>
+  <th scope="row">{{category.id}}</th>
+  <td>{{category.name}}</td>
+  <td>
+    <button type="button" class="btn btn-warning btn-xs">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="btn btn-danger btn-xs">
+      <i class="fas fa-trash"></i>
+    </button>
+  </td>
+</tr>
+{% endfor %}
+{% endblock rows %}
+    
+
+
