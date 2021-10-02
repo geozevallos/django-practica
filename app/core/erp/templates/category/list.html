@@ -12,7 +12,7 @@
 
 
 {% block rows %}
-{% for category in categories %}
+{% for category in object_list %}
 <tr>
   <th scope="row">{{category.id}}</th>
   <td>{{category.name}}</td>
