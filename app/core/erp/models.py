@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 
+from django.forms import model_to_dict
+
 # from django.db.models.deletion import CASCADE
 from core.erp.choices import gender_choices
 
@@ -73,6 +75,14 @@ class Category(models.Model):
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
         ordering = ['id']
+
+    def toJSON(self):
+        item = {
+            'id': self.id,
+            'nombre': self.name,
+        }
+        return item
+
 
 
 class Product(models.Model):

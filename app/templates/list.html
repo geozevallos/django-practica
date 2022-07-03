@@ -32,7 +32,7 @@
     </table>
   </div>
   <div class="card-footer">
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary btnRegistro">
       <i class="fas fa-plus"></i> Crear nuevo registro
     </button>
   </div>
@@ -43,13 +43,44 @@
 {% endblock %} {% block javascript %}
 <script type="application/javascript">
   $(document).ready(function () {
-    $("#tableData").DataTable(
-      {
-                    responsive: true,
-                    autoWidth: false
-                }
-    );
-  });
+    $("#tableData").DataTable({
+      responsive: true,
+      autoWidth: false,
+    });
 
+    // POST Usando FetchAPI
+    /**
+    let btnRegistro = document.querySelector(".btnRegistro");
+    btnRegistro.addEventListener("click", () => {
+      fetch('{% url "erp:category_list" %}', {
+        method: "POST",
+        body: JSON.stringify({id: 1}),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then(rpta => rpta.json()).then(result => console.log(result));
+    });
+    */
+
+    //POST Usando Jquery
+    $('.btnRegistro').on('click', function(){
+      $.ajax({
+        url: '{% url "erp:category_list" %}',
+        type: 'POST',
+        data: {id: 1},
+        dataType: 'json'
+      }).done(function(data){
+        //Si todo sale bien
+        console.log(data)
+      }).fail(function(jqXHR, textStatus, errorThrown){
+        console.log(`${textStatus}:${errorThrown}`)
+      }).always(function(){
+        console.log('siempre')
+      })
+    })
+
+    
+  
+  });
 </script>
 {% endblock javascript %}
