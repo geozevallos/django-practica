@@ -1,0 +1,35 @@
+{% extends 'body.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div class="card card-default">
+        <div class="card-header">
+          <h3 class="card-title">
+            {{title}}
+            <i class="fas fa-plus"></i>
+          </h3>
+        </div>
+        <div class="card-body">
+      {% csrf_token %}
+
+        {% for field in form.visible_fields  %}
+        <div class="form-group">
+            <label for="">{{field.label}}:</label>
+            {{field}}
+        </div>
+
+      {% endfor %}
+        
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary btnRegistro">
+            <i class="fas fa-save"></i> Guardar registro
+          </button>
+        </div>
+      </div>
+</form>
+
+
+
+{% endblock %}

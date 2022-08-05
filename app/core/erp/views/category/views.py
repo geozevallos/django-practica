@@ -1,9 +1,12 @@
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from core.erp.models import Category, Product
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.views.decorators.csrf import csrf_exempt
 import json
+
+from core.erp.views.category.forms import CategoryForm
 
 # Vista basada en funci´no
 
@@ -46,4 +49,16 @@ class CategoryListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Listado de categorias'
         # context['object_list'] = Product.objects.all()
+        return context
+
+class CategoryCreateView(CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name ="category/create.html"
+    success_url= reverse_lazy('erp:category_list')
+
+    #Data adicional a mandar
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Crear categoría'
         return context

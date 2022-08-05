@@ -1,6 +1,6 @@
 from os import name
 # from core.erp.views import myFirstView, mySecondView, prueba
-from core.erp.views.category.views import CategoryListView, category_list
+from core.erp.views.category.views import CategoryCreateView, CategoryListView, category_list
 from django.urls import path
 
 # Especifcinado nombre de las rutas
@@ -12,5 +12,6 @@ urlpatterns = [
     # path('dos/', mySecondView,  name='vista2'),
     # path('tres/', prueba,  name='vista3'),
     # path('category/list/', category_list, name='category_list')
-    path('category/list/', CategoryListView.as_view(), name="category_list")
+    path('category/list/', CategoryListView.as_view(), name="category_list"),
+    path('category/add/', CategoryCreateView.as_view(), name="category_add")
 ]
