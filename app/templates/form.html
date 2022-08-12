@@ -47,7 +47,10 @@
       e.preventDefault();
       myForm = new FormData(e.target)
 
-      fetch('{% url "erp:category_add" %}', {
+      fetch(
+        // '{% url "erp:category_add" %}',
+        window.location.pathname,
+         {
         method: "POST",
         body: myForm,
       }).then(rpta => rpta.json()).then(result => 

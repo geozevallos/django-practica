@@ -17,9 +17,9 @@
   <th scope="row">{{category.id}}</th>
   <td>{{category.name}}</td>
   <td>
-    <button type="button" class="btn btn-warning btn-xs">
+    <a href="{% url 'erp:category_edit' category.id %}" type="button" class="btn btn-warning btn-xs">
       <i class="fas fa-edit"></i>
-    </button>
+    </a>
     <button type="button" class="btn btn-danger btn-xs">
       <i class="fas fa-trash"></i>
     </button>
