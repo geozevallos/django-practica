@@ -1,0 +1,56 @@
+{% extends 'body.html' %}
+
+{% block content %}
+<form action="" method="post" id="deleteForm">
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">
+          {{title}}
+          <i class="fas fa-trash"></i>
+        </h3>
+      </div>
+      <div class="card-body">
+        {% csrf_token %} 
+        <input type="hidden" name="action" value="{{action}}">
+        <div class="alert alert-danger alert-dismissible">
+            <h5><i class="icon fas fa-ban"></i>Notificación</h5>
+            ¿Estás seguro de eliminar el registro nro {{object.id}}?
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary btnRegistro">
+          <i class="fas fa-trash"></i> Eliminar registro
+        </button>
+        <a href="{{list_url}}" class="btn btn-info btn-flat">
+            <i class="fas fa-times">Cancelar</i>
+        </a>
+      </div>
+    </div>   
+  </form>
+
+  <script>
+        let deleteForm = document.getElementById('deleteForm');
+        deleteForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      myForm = new FormData(e.target)
+
+      fetch(
+        // '{% url "erp:category_add" %}',
+        window.location.pathname,
+         {
+        method: "POST",
+        body: myForm,
+      }).then(rpta => rpta.json()).then(result => 
+        {
+        if(!result.hasOwnProperty('error')){
+            sendMessage('Eliminado', 'Registro eliminado', 'success').then(()=> location.href = '{{list_url}}')
+        } else {
+          console.log(result)
+          showFormErrors(result.error);
+        }
+      }
+      ).catch(error => console.error('Error:', error));
+    })
+  </script>
+{% endblock content %}
+    

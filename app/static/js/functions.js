@@ -18,3 +18,15 @@ function showFormErrors(errors){
         icon: 'error'
       })
 }
+
+function sendMessage(title, text, icon){
+    return new Promise((resolve, reject) => {
+        resolve(
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon
+              })
+        )
+    })
+  }

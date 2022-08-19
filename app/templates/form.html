@@ -5,7 +5,14 @@
     <div class="card-header">
       <h3 class="card-title">
         {{title}}
+        
+        {% if action == 'add' %}
         <i class="fas fa-plus"></i>
+        {% else %}
+        <i class="fas fa-edit"></i>
+        {% endif %}
+          
+        
       </h3>
     </div>
     <div class="card-body">
@@ -77,15 +84,6 @@
       }
       ).catch(error => console.error('Error:', error));
     })
-
-    function sendMessage(title, text, icon){
-      Swal.fire({
-          title: title,
-          text: text,
-          icon: icon
-        })
-    }
-
 
 
 </script>
