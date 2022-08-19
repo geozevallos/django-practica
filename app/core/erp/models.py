@@ -81,6 +81,7 @@ class Category(models.Model):
         item = {
             'id': self.id,
             'nombre': self.name,
+            'descripcion': self.description
         }
         return item
 

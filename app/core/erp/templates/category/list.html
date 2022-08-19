@@ -1,10 +1,13 @@
 {% extends 'list.html' %} 
-
-
+{% load static %}
+{% block headlist %}
+  <script src="{% static 'category/js/list.js' %}"></script>
+{% endblock headlist %}
 {% block columns %}
 <tr>
     <th scope="col">#</th>
     <th scope="col">Nombre</th>
+    <th scope="col">Descripción</th>
     <th scope="col">Opciones</th>
   </tr>
 {% endblock columns %}
@@ -12,7 +15,10 @@
 
 
 {% block rows %}
-{% for category in object_list %}
+
+
+<!-- ANTIGUO, SIN JQUERY -->
+<!-- {% for category in object_list %}
 <tr>
   <th scope="row">{{category.id}}</th>
   <td>{{category.name}}</td>
@@ -25,8 +31,16 @@
     </a>
   </td>
 </tr>
-{% endfor %}
+{% endfor %} -->
+
 {% endblock rows %}
+
+
+{% block javascript %}
+
+
+{% endblock javascript %}
+
     
 
 

@@ -32,6 +32,7 @@ class CategoryListView(ListView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    '''
     def post(self, request):
         data = {}
         # post_data = json.loads(request.body.decode("utf-8")) # usando FetchAPI
@@ -43,7 +44,23 @@ class CategoryListView(ListView):
             data['error']=str(e)
 
         return JsonResponse(data)
-    
+    '''
+
+    # Datatable ajax
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            action = request.POST['action']
+            if action == 'searchdata':
+                data = []
+                for i in Category.objects.all():
+                    data.append(i.toJSON())
+            else:
+                data['error'] = "Ha ocurrido un error"
+        except Exception as e:
+            data['error']=str(e)
+        # Para serializar datos q no son dic, safe= False
+        return JsonResponse(data, safe=False)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
