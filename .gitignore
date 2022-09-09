@@ -144,3 +144,5 @@ venv/
 # Template
 **/static/webs/assets/
 **/static/**/node_modules
+
+**/static/lib/*
