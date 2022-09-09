@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.erp',
+    'core.homepage'
 ]
 
 MIDDLEWARE = [
@@ -144,4 +145,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
     BASE_DIR / "core/erp/static",
+    BASE_DIR / "core/homepage/static",
 ]
