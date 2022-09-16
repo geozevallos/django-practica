@@ -1,6 +1,6 @@
 from os import name
 # from core.erp.views import myFirstView, mySecondView, prueba
-from core.erp.views.category.views import CategoryCreateView, CategoryDeleteView, CategoryListView, CategoryUpdateView, category_list
+from core.erp.views.category.views import CategoryCreateView, CategoryDeleteView, CategoryFormView, CategoryListView, CategoryUpdateView, category_list
 from django.urls import path
 
 # Especifcinado nombre de las rutas
@@ -16,4 +16,5 @@ urlpatterns = [
     path('category/add/', CategoryCreateView.as_view(), name="category_add"),
     path('category/edit/<int:pk>/', CategoryUpdateView.as_view(), name="category_edit"),
     path('category/delete/<int:pk>/', CategoryDeleteView.as_view(), name="category_delete"),
+    path('category/form/', CategoryFormView.as_view(), name="category_form"),
 ]

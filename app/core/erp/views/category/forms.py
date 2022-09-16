@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea, ValidationError
 from core.erp.models import Category
 
 class CategoryForm(ModelForm):
@@ -31,3 +31,11 @@ class CategoryForm(ModelForm):
                 }
             )
          }
+
+    # Validar data
+    def clean(self):
+        cleaned = super().clean()
+        if len(cleaned['name']) < 10:
+            # self.add_error('name', 'Le faltan caracteres')
+            raise ValidationError('Validacion generica')
+        return cleaned
