@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my apps
     'core.erp',
-    'core.homepage'
+    'core.homepage',
+    'core.login',
+
+    # 3er apps
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +153,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "core/erp/static",
     BASE_DIR / "core/homepage/static",
 ]
+
+# URL Login
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/erp/category/list/'
