@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('primeraurl/', include('core.erp.urls'))
     path('erp/', include('core.erp.urls')),
-    path('', IndexView.as_view()),
-    path('login/', LoginFormView2.as_view())
+    path('', IndexView.as_view(), name='homepage'),
+    path('login/', LoginFormView2.as_view(), name='login'),
+    # path('logout/', LogoutView.as_view()),
+    path('logout/', LogoutRedirectView.as_view(), name='logout'),
 ]

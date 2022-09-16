@@ -1,9 +1,9 @@
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
-from django.views.generic import FormView
+from django.views.generic import FormView, RedirectView
 from django.contrib.auth.forms import AuthenticationForm
 from django.http.response import HttpResponseRedirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
 
 class LoginFormView(LoginView):
@@ -35,3 +35,11 @@ class LoginFormView2(FormView):
     def form_valid(self, form):
         login(self.request, form.get_user())
         return HttpResponseRedirect(self.success_url)
+
+
+class LogoutRedirectView(RedirectView):
+    pattern_name = 'login' #Mi url debe tener este nombre
+
+    def dispatch(self, request, *args, **kwargs):
+        logout(request)
+        return super().dispatch(request, *args, **kwargs)
