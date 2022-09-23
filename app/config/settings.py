@@ -156,5 +156,5 @@ STATICFILES_DIRS = [
 
 # URL Login
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/erp/category/list/'
+LOGIN_REDIRECT_URL = '/erp/dashboard/'
 LOGOUT_REDIRECT_URL = LOGIN_URL
