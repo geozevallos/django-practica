@@ -26,7 +26,8 @@ class LoginFormView(LoginView):
 class LoginFormView2(FormView):
     form_class = AuthenticationForm
     template_name = 'login.html'
-    success_url = reverse_lazy('setting.LOGIN_REDIRECT_URL')
+    # success_url = reverse_lazy('erp:')
+    success_url = setting.LOGIN_REDIRECT_URL
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
