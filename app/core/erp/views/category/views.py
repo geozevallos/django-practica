@@ -7,6 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 from core.erp.views.category.forms import CategoryForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Vista basada en funci´no
 
@@ -29,6 +31,7 @@ class CategoryListView(ListView):
     #     return Category.objects.filter(name__startswith = 'B')
 
     @csrf_exempt
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
