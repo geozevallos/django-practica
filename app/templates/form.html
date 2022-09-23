@@ -35,59 +35,65 @@
 </form>
 
 <script>
-    {% if form.errors %}
-    let errors = '';
-        {% for field in form  %}
-            {% for error in field.errors  %}
-                errors += '{{error}}\n'
-            {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors  %}
-                errors += '{{error}}\n'
-        {% endfor %}
-        Swal.fire({
-            title: "Error!",
-            text: errors,
-            icon: "error",
-            confirmButtonText: "Ok",
-        });
-    {% endif %}
+  // Esto es para el FormView
+    // {% if form.errors %}
+    // let errors = '';
+    //     {% for field in form  %}
+    //         {% for error in field.errors  %}
+    //             errors += '{{error}}\n'
+    //         {% endfor %}
+    //     {% endfor %}
+    //     {% for error in form.non_field_errors  %}
+    //             errors += '{{error}}\n'
+    //     {% endfor %}
+    //     Swal.fire({
+    //         title: "Error!",
+    //         text: errors,
+    //         icon: "error",
+    //         confirmButtonText: "Ok",
+    //     });
+    // {% endif %}
 
-    // let formCreation = document.getElementById('formCreation');
-    // formCreation.addEventListener('submit', (e) => {
-    //   e.preventDefault();
-    //   myForm = new FormData(e.target)
+    // Sin formView
+    let formCreation = document.getElementById('formCreation');
+    formCreation.addEventListener('submit', (e) => {
+      e.preventDefault();
+      myForm = new FormData(e.target)
 
-    //   fetch(
-    //     // '{% url "erp:category_add" %}',
-    //     window.location.pathname,
-    //      {
-    //     method: "POST",
-    //     body: myForm,
-    //   }).then(rpta => rpta.json()).then(result => 
-    //     {        
-    //     if(!result.hasOwnProperty('error')){
+      confirmMessage(window.location.pathname, "POST", myForm, function(){
+        location.href = '{{list_url}}'
+      });
 
-    //       Swal.fire({
-    //       title: 'Creado correctamente!',
-    //       icon: 'success',
-    //       // html: 'I will close in <b></b> milliseconds.',
-    //       timer: 2000,
-    //       timerProgressBar: true,
-    //       showConfirmButton: false,
-    //       }).then((result) => {
-    //       if (result.dismiss === Swal.DismissReason.timer) {
-    //         location.href = '{{list_url}}'
-    //         }
-    //       })
+      // fetch(
+      //   // '{% url "erp:category_add" %}',
+      //   window.location.pathname,
+      //    {
+      //   method: "POST",
+      //   body: myForm,
+      // }).then(rpta => rpta.json()).then(result => 
+      //   {        
+      //   if(!result.hasOwnProperty('error')){
 
-    //     } else {
-    //       console.log(result)
-    //       showFormErrors(result.error);
-    //     }
-    //   }
-    //   ).catch(error => console.error('Error:', error));
-    // })
+      //     Swal.fire({
+      //     title: 'Creado correctamente!',
+      //     icon: 'success',
+      //     // html: 'I will close in <b></b> milliseconds.',
+      //     timer: 2000,
+      //     timerProgressBar: true,
+      //     showConfirmButton: false,
+      //     }).then((result) => {
+      //     if (result.dismiss === Swal.DismissReason.timer) {
+      //       location.href = '{{list_url}}'
+      //       }
+      //     })
+
+      //   } else {
+      //     console.log(result)
+      //     showFormErrors(result.error);
+      //   }
+      // }
+      // ).catch(error => console.error('Error:', error));
+    })
 
 
 </script>

@@ -33,9 +33,9 @@ class CategoryForm(ModelForm):
          }
 
     # Validar data
-    def clean(self):
-        cleaned = super().clean()
-        if len(cleaned['name']) < 10:
-            # self.add_error('name', 'Le faltan caracteres')
-            raise ValidationError('Validacion generica')
-        return cleaned
+    # def clean(self):
+    #     cleaned = super().clean()
+    #     # if len(cleaned['name']) < 10:
+    #         # self.add_error('name', 'Le faltan caracteres')
+    #         # raise ValidationError('Validacion generica')
+    #     return cleaned

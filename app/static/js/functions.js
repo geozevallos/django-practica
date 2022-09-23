@@ -29,4 +29,40 @@ function sendMessage(title, text, icon){
               })
         )
     })
-  }
+}
+
+function confirmMessage(url, fetchMethod, form, callback){
+    Swal.fire({
+        title: '¿Estás seguro de realizar esta acción?',
+        text: "No podrás revertir esta acción!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+            fetch(url, {method: fetchMethod, body: form}).then(rpta => rpta.json()).then(result => {
+                if(!result.hasOwnProperty('error')){
+                    Swal.fire({
+                    title: 'Creado correctamente!',
+                    icon: 'success',
+                    // html: 'I will close in <b></b> milliseconds.',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                      callback();
+                      }
+                    })
+          
+                  } else {
+                    console.log(result)
+                    showFormErrors(result.error);
+                  }
+            }).catch(error => console.error('Error:', error));
+        }
+      })
+}
