@@ -19,6 +19,9 @@ from django.urls import path, include
 from core.homepage.views import IndexView
 from core.login.views import *
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('primeraurl/', include('core.erp.urls'))
@@ -28,3 +31,5 @@ urlpatterns = [
     # path('logout/', LogoutView.as_view()),
     path('logout/', LogoutRedirectView.as_view(), name='logout'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

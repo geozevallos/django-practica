@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 
 from django.forms import model_to_dict
+from config.settings import MEDIA_URL, STATIC_URL
 
 # from django.db.models.deletion import CASCADE
 from core.erp.choices import gender_choices
@@ -95,6 +96,18 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_image(self):
+        if self.image:
+            return f'{MEDIA_URL}{self.image}'
+        return f'{STATIC_URL}img/favicon.png'
+
+    def toJSON(self):
+        item = {
+            'id': self.id,
+            'nombre': self.name,
+        }
+        return item
 
     class Meta:
         verbose_name = 'Producto'

@@ -44,6 +44,7 @@ function confirmMessage(url, fetchMethod, form, callback){
       }).then((result) => {
         if (result.value) {
             fetch(url, {method: fetchMethod, body: form}).then(rpta => rpta.json()).then(result => {
+              console.log(result)
                 if(!result.hasOwnProperty('error')){
                     Swal.fire({
                     title: 'Creado correctamente!',

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<form id="formCreation" action="" method="post">
+<form id="formCreation" action="" method="post" enctype="multipart/form-data">
   <div class="card card-default">
     <div class="card-header">
       <h3 class="card-title">
@@ -58,7 +58,9 @@
     let formCreation = document.getElementById('formCreation');
     formCreation.addEventListener('submit', (e) => {
       e.preventDefault();
+      console.log(e.target)
       myForm = new FormData(e.target)
+      console.log(myForm)
 
       confirmMessage(window.location.pathname, "POST", myForm, function(){
         location.href = '{{list_url}}'

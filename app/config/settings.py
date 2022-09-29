@@ -158,3 +158,8 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/erp/dashboard/'
 LOGOUT_REDIRECT_URL = LOGIN_URL
+
+
+# MEDIA
+MEDIA_ROOT = os.path.join(BASE_DIR, 'data/') # 'data' is my media folder
+MEDIA_URL = '/media/'

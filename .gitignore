@@ -146,3 +146,5 @@ venv/
 **/static/**/node_modules
 
 **/static/lib/*
+
+**/data/**
