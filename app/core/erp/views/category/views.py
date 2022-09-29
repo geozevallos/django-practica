@@ -6,7 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, F
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-from core.erp.views.category.forms import CategoryForm
+from core.erp.forms import CategoryForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 

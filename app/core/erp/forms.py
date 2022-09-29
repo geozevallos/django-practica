@@ -1,5 +1,5 @@
 from django.forms import ModelForm, TextInput, Textarea, ValidationError
-from core.erp.models import Category
+from core.erp.models import Category, Product
 
 class CategoryForm(ModelForm):
 
@@ -39,3 +39,20 @@ class CategoryForm(ModelForm):
     #         # self.add_error('name', 'Le faltan caracteres')
     #         # raise ValidationError('Validacion generica')
     #     return cleaned
+
+
+class ProductForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs['autofocus'] = True
+
+    class Meta:
+        model = Product
+        fields = '__all__'
+        widgets = {
+            'name': TextInput(
+                attrs={
+                    'placeholder': 'Ingrese un nombre',
+                }
+            ),
+        }
