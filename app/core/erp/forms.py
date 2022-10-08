@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Textarea, ValidationError
+from django.forms import ModelForm, TextInput, Textarea, ValidationError, Form, ModelChoiceField, Select
 from core.erp.models import Category, Product
 
 class CategoryForm(ModelForm):
@@ -56,3 +56,14 @@ class ProductForm(ModelForm):
                 }
             ),
         }
+
+
+
+
+class TestForm(Form):
+    categories = ModelChoiceField(queryset=Category.objects.all(), widget=Select(attrs={
+        'class': 'form-control'
+    }))
+    productos = ModelChoiceField(queryset=Product.objects.none(), widget=Select(attrs={
+        'class': 'form-control'
+    }))

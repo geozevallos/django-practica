@@ -5,6 +5,7 @@ from django.urls import path
 
 from core.erp.views.dashboard.views import DashboardView
 from core.erp.views.product.views import ProductCreateView, ProductDeleteView, ProductListView, ProductUpdateView
+from core.erp.views.test.views import TestView
 
 # Especifcinado nombre de las rutas
 app_name = 'erp'
@@ -28,4 +29,7 @@ urlpatterns = [
 
     #Home
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
+
+    #Test:
+    path('test/', TestView.as_view(), name='test'),    
 ]
