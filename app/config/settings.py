@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core.erp',
     'core.homepage',
     'core.login',
+    'core.user',
 
     # 3er apps
     'widget_tweaks',
@@ -95,7 +96,7 @@ DATABASES = {
         'OPTIONS': {
             'options': '-c search_path=proyecto'
         },
-        'NAME': 'proyectodjango',
+        'NAME': 'django_algorisoft',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
@@ -163,3 +164,5 @@ LOGOUT_REDIRECT_URL = LOGIN_URL
 # MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, 'data/') # 'data' is my media folder
 MEDIA_URL = '/media/'
+
+AUTH_USER_MODEL = 'user.User'
