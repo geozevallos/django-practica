@@ -31,6 +31,7 @@ class CategoryForm(ModelForm):
                 }
             )
          }
+         exclude = ('created_by', 'updated_by',)
 
     # Validar data
     # def clean(self):

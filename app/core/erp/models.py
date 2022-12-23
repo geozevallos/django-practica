@@ -6,6 +6,7 @@ from config.settings import MEDIA_URL, STATIC_URL
 
 # from django.db.models.deletion import CASCADE
 from core.erp.choices import gender_choices
+from core.utils.models import BaseModel
 
 # Create your models here.
 
@@ -66,7 +67,7 @@ from core.erp.choices import gender_choices
 
 
 
-class Category(models.Model):
+class Category(BaseModel):
     name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
     description = models.CharField(max_length=150, verbose_name='Descripcion', null=True)
 
