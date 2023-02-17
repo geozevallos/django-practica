@@ -33,11 +33,18 @@ class ClientView(TemplateView):
                 cliente.address = request.POST['address']
                 cliente.gender = request.POST['gender']
                 cliente.save()
+            elif action == "edit":
+                cliente = Client.objects.get(pk=request.POST['id'])
+                cliente.names = request.POST['names']
+                cliente.surnames = request.POST['surnames']
+                cliente.dni = request.POST['dni']
+                cliente.address = request.POST['address']
+                cliente.gender = request.POST['gender']
+                cliente.save()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
             data['error'] = str(e)
-        print(data)
         return JsonResponse(data, safe=False)
 
     def get_context_data(self, **kwargs):
