@@ -36,9 +36,14 @@
     </table>
   </div>
   <div class="card-footer">
+    
+    {% block butttons_list %}
     <a href="{{create_url}}" type="button" class="btn btn-primary btnRegistro">
       <i class="fas fa-plus"></i> Crear nuevo registro
     </a>
+      
+    {% endblock butttons_list %}
+      
   </div>
   <!-- /.card-body -->
 </div>
