@@ -24,7 +24,16 @@ class TestView(TemplateView):
         data = {}
         try:
             action = request.POST['action']
-            if action == 'search_product_id':
+            if action == 'autocomplete':
+                data = []
+                termino = request.POST['term']
+                products = Product.objects.filter(name__icontains=termino)
+                if len(products) > 0:
+                    for i in products:
+                        item = i.toJSON()
+                        item['value'] = i.name
+                        data.append(item)
+            elif action == 'search_product_id':
                 data = []
                 print(request.POST['id'])
                 for product in Product.objects.filter(cate_id=request.POST['id']):
