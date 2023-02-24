@@ -28,7 +28,7 @@ $(function () {
                 orderable: false,
                 render: function (data, type, row) {
                     var buttons = '<a href="#" class="btn btn-warning btn-xs btn-flat" rel="edit"><i class="fas fa-edit"></i></a> ';
-                    buttons += '<a href="#" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
+                    buttons += '<a href="#" type="button" class="btn btn-danger btn-xs btn-flat" rel="delete"><i class="fas fa-trash-alt"></i></a>';
                     return buttons;
                 }
             },
@@ -85,6 +85,16 @@ $(function () {
         $('input[name="address"]').val(data.address);
         $('select[name="gender"]').val(data.gender.id);
         $('#myModalClient').modal('show');
+    })
+    .on('click', 'a[rel="delete"]', function(){
+        const data = tableData.row($(this).parents('tr')).data()
+        const parameters = new FormData()
+        parameters.append("id", data.id);
+        parameters.append("action", "delete");
+
+        confirmMessage(window.location.pathname, 'POST', parameters, 'eliminado', () => {
+            tableData.ajax.reload()
+        })
     })
 
 });

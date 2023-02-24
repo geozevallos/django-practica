@@ -31,7 +31,7 @@ function sendMessage(title, text, icon){
     })
 }
 
-function confirmMessage(url, fetchMethod, form, callback){
+function confirmMessage(url, fetchMethod, form, title, callback){
     Swal.fire({
         title: '¿Estás seguro de realizar esta acción?',
         text: "No podrás revertir esta acción!",
@@ -47,7 +47,7 @@ function confirmMessage(url, fetchMethod, form, callback){
               console.log(result)
                 if(!result.hasOwnProperty('error')){
                     Swal.fire({
-                    title: 'Creado correctamente!',
+                    title: title,
                     icon: 'success',
                     // html: 'I will close in <b></b> milliseconds.',
                     timer: 2000,

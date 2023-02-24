@@ -62,7 +62,7 @@
       myForm = new FormData(e.target)
       console.log(myForm)
 
-      confirmMessage(window.location.pathname, "POST", myForm, function(){
+      confirmMessage(window.location.pathname, "POST", myForm, 'Creado correctamnete', function(){
         location.href = '{{list_url}}'
       });
 

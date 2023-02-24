@@ -21,6 +21,7 @@ class ClientView(TemplateView):
         data = {}
         try:
             action = request.POST['action']
+            print(action)
             if action == 'searchdata':
                 data = []
                 for i in Client.objects.all():
@@ -41,12 +42,15 @@ class ClientView(TemplateView):
                 cliente.address = request.POST['address']
                 cliente.gender = request.POST['gender']
                 cliente.save()
+            elif action == "delete":
+                cliente = Client.objects.get(pk=request.POST['id'])
+                cliente.delete()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
             data['error'] = str(e)
         return JsonResponse(data, safe=False)
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Listado de Clientes'
