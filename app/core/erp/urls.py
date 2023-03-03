@@ -5,7 +5,7 @@ from django.urls import path
 
 from core.erp.views.dashboard.views import DashboardView
 from core.erp.views.product.views import ProductCreateView, ProductDeleteView, ProductListView, ProductUpdateView
-from core.erp.views.test.views import TestView
+from core.erp.views.test.views import TestView, ReportePersonalizadoExcel
 from core.erp.views.client.views import ClientView
 
 # Especifcinado nombre de las rutas
@@ -36,4 +36,5 @@ urlpatterns = [
 
     #Test:
     path('test/', TestView.as_view(), name='test'),    
+    path('descarga-excel/', ReportePersonalizadoExcel.as_view(), name='excel'),    
 ]
