@@ -37,8 +37,22 @@
 
     <!-- bloque JS -->
     {% block javascript %}
-        
+
     {% endblock javascript %}
-        
+    <script>
+        {% if messages %}
+        let html = '<p>';
+            {% for message in messages %}
+            html += '{{ message }} </brb>'
+            {% endfor %}
+            html += '</p>'
+            Swal.fire({
+                title: 'Error!',
+                html: html,
+                icon: 'error'
+            })
+        {% endif %}
+    </script>
+
     </body>
 {% endblock %}

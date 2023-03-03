@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from core.erp.models import Category, Product
-from core.erp.mixins import IsSuperuserMixin
+from core.erp.mixins import IsSuperuserMixin, ValidateRequiredPermissionMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, FormView
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -21,9 +21,10 @@ def category_list(request):
     return render(request, "category/list.html", data)
 
 
-class CategoryListView(IsSuperuserMixin,ListView):
+class CategoryListView(ValidateRequiredPermissionMixin, IsSuperuserMixin,ListView):
     #Tengo que decirle cual es el modelo
     model = Category
+    permission_required = 'erp.view_category'
 
     #Cual es la plantilla
     template_name = 'category/list.html'
